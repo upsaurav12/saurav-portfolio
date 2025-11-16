@@ -1,5 +1,4 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export const SocialLinks = () => {
   const socials = [

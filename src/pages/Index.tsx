@@ -51,8 +51,6 @@ const experiences = [
     role: "LFX Intern — Headlamp",
     period: "June 2025 – Aug 2025",
     location: "Remote",
-    description:
-      "Worked on Kubernetes SIG Headlamp, contributing core UI/UX improvements and feature enhancements.",
     highlights: [
       "Designed and implemented the k8cache package in Golang to cache Kubernetes API responses, reducing latency from 40 ms to 9–15 ms",
       "Developed unit and integration tests achieving 61% coverage, improving CI robustness and code quality.",
@@ -73,8 +71,6 @@ const experiences = [
     role: "Open Source Contributor",
     period: "Jan 2025 – Present",
     location: "Remote",
-    description:
-      "Contributed to multiple CNCF-hosted projects under Kubernetes SIGs and cloud native tooling.",
     highlights: [
   "Headlamp (Kubernetes Dashboard) – Implemented new UI features, improved data fetching with optimized hooks, and refactored large legacy components into modular, reusable units; contributed 7+ merged PRs improving maintainability and performance.",
   "Designed and developed a reusable `headlampConfig` backend package in Go, enabling cleaner architecture, standardized config handling, and easier integration for future features.",
@@ -104,8 +100,6 @@ const experiences = [
     role: "Open Source Contributor",
     period: "June 2024 - August 2024",
     location: "Remote",
-    description:
-      "Contributed to numerous open-source projects by fixing website bugs and enhancing UI components.",
     highlights: [
       "Fixed major UI issues across multiple repositories.",
       "Collaborated with global contributors using GitHub workflows.",
@@ -120,8 +114,6 @@ const experiences = [
     role: "Contributor",
     period: "Dec 2023 – May 2024",
     location: "Remote",
-    description:
-      "Contributed to CircuitVerse by fixing bugs and adding new features to enhance the platform functionality.",
     highlights: [
       "Worked with Vue.js, Ruby, and Rails to improve code quality.",
       "Enhanced UI and improved overall user experience."

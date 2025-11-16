@@ -2,6 +2,7 @@ import { IdCard, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { stringify } from "querystring";
+import { LinkButton } from "./ui/link-button";
 
 interface ExperienceCardProps {
   company: string;
@@ -72,24 +73,13 @@ export const ExperienceCard = ({
   {/* ✅ Bottom-right Link Buttons */}
   {link && (
   <div className="flex flex-wrap gap-2 mt-auto self-end">
-    {link.map((l, idx) => (
-      <a key={idx} href={l.url} target="_blank" rel="noopener noreferrer">
-        <Button
-  size="sm"
-  variant="outline"
-  className="
-    text-xs h-7 px-3 rounded-md
-    border-gray-300 text-gray-700
-    bg-white
-    hover:bg-gray-100
-    dark:bg-white dark:text-gray-700 dark:border-gray-300 dark:hover:bg-gray-200
-  "
->
-  {l.label}
-</Button>
-
-      </a>
+    {link?.length > 0 && (
+  <div className="flex flex-wrap gap-2 mt-3">
+    {link.map((l, i) => (
+      <LinkButton key={i} href={l.url} label={l.label} />
     ))}
+  </div>
+)}
   </div>
 )}
 
