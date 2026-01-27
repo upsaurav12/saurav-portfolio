@@ -175,82 +175,90 @@ enforcing code quality standards.`,
 
         {/* HERO */}
         <section>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-[1fr_auto] gap-12"
-          >
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <TypeWriter
-                  lines={[
-                    "whoami?",
-                    "I am Saurav Upadhyay",
-                    "An open source developer",
-                    "Backend & Cloud Native Engineer",
-                  ]}
-                />
-              </div>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="grid md:grid-cols-[1fr_auto] gap-12"
+  >
+    {/* TEXT CONTENT */}
+    <div className="space-y-6 order-2 md:order-1">
+      <div className="space-y-2">
+        <TypeWriter
+          lines={[
+            "whoami ??",
+            "I am Saurav Upadhyay!!",
+            "A Backend and Open source Developer ;)",
+            "Who love to discuss about Open Source, AI, Backend Systems :)",
+            "I have interest mainly in Cloud Native, OSS and Backend Development."
+          ]}
+        />
+      </div>
 
+      <h1 className="text-4xl font-bold">
+        Saurav Upadhyay
+      </h1>
 
-              <h1 className="text-4xl font-bold">
-                Saurav Upadhyay
-              </h1>
+      <p className="text-accent">
+        developer · open source · cloud native
+      </p>
 
-              <p className="text-accent">
-                developer · open source · cloud native
-              </p>
+      <p className="text-muted max-w-xl leading-relaxed">
+        Backend engineer contributing to CNCF open-source projects, building scalable cloud-native systems in Go and Kubernetes with a strong focus on performance, reliability, and production readiness.
+      </p>
 
-              <p className="text-muted max-w-xl leading-relaxed">
-                Backend-focused engineer contributing to CNCF projects,
-                interested in Kubernetes internals and scalable systems.
-              </p>
+      <div className="flex items-center gap-6 text-sm text-muted">
+        <span className="flex items-center gap-2">
+          <MapPin className="w-4 h-4" />
+          India
+        </span>
+        <SocialLinks />
+        <ThemeToggle />
+      </div>
+    </div>
 
-              <div className="flex items-center gap-6 text-sm text-muted">
-                <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  India
-                </span>
-                <SocialLinks />
-                <ThemeToggle />
-              </div>
+    {/* PROFILE IMAGE */}
+    <motion.img
+      src={profileImage}
+      alt="Saurav Upadhyay"
+      className="
+        w-36 h-36 sm:w-44 sm:h-44
+        rounded-lg
+        grayscale
+        hover:grayscale-0
+        transition
+        order-1 md:order-2
+        mx-auto md:mx-0
+      "
+      whileHover={{ scale: 1.03 }}
+    />
+  </motion.div>
+</section>
 
-            </div>
+        <section className="space-y-6 rounded-2xl bg-card/50 p-4 sm:p-6">
+  <TypedSectionHeader label="experience" />
 
-            <motion.img
-              src={profileImage}
-              alt="Saurav Upadhyay"
-              className="w-44 h-44 rounded-lg  grayscale hover:grayscale-0 transition"
-              whileHover={{ scale: 1.03 }}
-            />
-          </motion.div>
-        </section>
-
-        <section className="space-y-6 rounded-2xl bg-card/50 p-6">
-          <TypedSectionHeader label="experience" />
-
-          <div
-            className="
-      max-h-[520px]
-      overflow-y-auto
+  <div
+    className="
       space-y-6
-      pr-2
-      scroll-smooth
+      sm:max-h-[520px]
+      sm:overflow-y-auto
+      sm:pr-2
+      sm:scroll-smooth
     "
-          >
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <ExperienceCard {...exp} />
-              </motion.div>
-            ))}
-          </div>
-        </section>
+  >
+    {experiences.map((exp, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <ExperienceCard {...exp} />
+      </motion.div>
+    ))}
+  </div>
+</section>
 
         {/* PROJECTS */}
         <section className="space-y-6 rounded-2xl bg-card/40 backdrop-blur p-6">

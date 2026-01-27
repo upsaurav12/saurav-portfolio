@@ -62,7 +62,7 @@ export const ExperienceCard = ({
         group
         relative
         rounded-xl
-        p-6
+        p-4 sm:p-6
         bg-background/60
         backdrop-blur
         border border-border/40
@@ -90,34 +90,35 @@ export const ExperienceCard = ({
       />
 
       {/* Header */}
-      <div className="relative flex items-start justify-between gap-4 mb-4">
+      <div className="relative flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
         <div className="flex items-start gap-3">
           {logo && (
             <img
               src={logo}
               alt={`${company} logo`}
               className="
-          w-10 h-10
-          rounded-md
-          object-contain
-          bg-bg/60
-          border border-border/40
-          p-1
-        "
+                w-9 h-9 sm:w-10 sm:h-10
+                rounded-md
+                object-contain
+                bg-bg/60
+                border border-border/40
+                p-1
+                shrink-0
+              "
             />
           )}
 
           <div>
-            <h3 className="text-lg font-semibold text-fg">
+            <h3 className="text-base sm:text-lg font-semibold text-fg">
               {company}
             </h3>
-            <p className="text-accent font-medium">
+            <p className="text-accent font-medium text-sm sm:text-base">
               {role}
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-1 text-sm text-muted whitespace-nowrap">
+        <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2 sm:gap-1 text-xs sm:text-sm text-muted">
           <span>{period}</span>
           <div className="flex items-center gap-1">
             <MapPin className="w-3 h-3" />
@@ -125,7 +126,6 @@ export const ExperienceCard = ({
           </div>
         </div>
       </div>
-
 
       {/* Highlights */}
       <ul className="relative space-y-2 mb-4">
@@ -158,21 +158,19 @@ export const ExperienceCard = ({
               key={tag}
               title={tag}
               className="
-          flex items-center justify-center
-          w-9 h-9
-          rounded-md
-          bg-bg/60
-          border-none
-          text-muted
-          transition
-          group-hover:text-fg
-          hover:border-accent/50
-        "
+                flex items-center justify-center
+                w-8 h-8 sm:w-9 sm:h-9
+                rounded-md
+                bg-bg/60
+                text-muted
+                transition
+                group-hover:text-fg
+              "
             >
               {icon ? (
-                <i className={`${icon} text-xl`} />
+                <i className={`${icon} text-lg sm:text-xl`} />
               ) : (
-                <span className="text-xs font-mono">
+                <span className="text-[10px] font-mono px-1 text-center">
                   {tag}
                 </span>
               )}
@@ -182,33 +180,27 @@ export const ExperienceCard = ({
       </div>
 
       {/* Links */}
-{link?.length > 0 && (
-  <div
-    className="
-      relative
-      flex flex-wrap gap-2
-      mt-auto self-end
-      text-sm
-    "
-  >
-    {link.map((l, i) => (
-      <LinkButton
-        key={i}
-        href={l.url}
-        label={l.label}
-        className="
-          bg-bg/70
-          text-fg
-          border border-border/60
-          hover:border-accent
-          hover:text-accent
-          transition
-        "
-      />
-    ))}
-  </div>
-)}
-
+      {link?.length > 0 && (
+        <div className="relative flex flex-wrap gap-2 mt-auto self-start sm:self-end">
+          {link.map((l, i) => (
+            <LinkButton
+              key={i}
+              href={l.url}
+              label={l.label}
+              className="
+                bg-bg/80
+                text-fg
+                border border-border/60
+                hover:border-accent
+                hover:text-accent
+                transition
+                text-xs
+              "
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
+
