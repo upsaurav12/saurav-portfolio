@@ -1,3 +1,5 @@
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -17,6 +19,32 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
+
+@layer base {
+  :root {
+    --bg: 248 250 252;        /* light background */
+    --fg: 15 23 42;          /* light foreground */
+    --muted: 100 116 139;
+    --border: 226 232 240;
+    --accent: 37 99 235;
+  }
+
+  .dark {
+    --bg: 2 6 23;            /* dark background */
+    --fg: 226 232 240;
+    --muted: 148 163 184;
+    --border: 30 41 59;
+    --accent: 96 165 250;
+  }
+
+  body {
+    @apply bg-bg text-fg;
+  }
+}
+
+
+
 
 @keyframes logo-spin {
   from {

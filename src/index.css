@@ -7,36 +7,28 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
-    --background: 222 47% 4%;
-    --foreground: 210 40% 98%;
+    :root {
+    /* LIGHT */
+    --bg: 255 255 255;
+    --fg: 15 23 42;
+    --muted: 71 85 105;       /* slate-600 */
+    --border: 226 232 240;    /* slate-200 */
+    --accent: 37 99 235;
+    --card: 248 250 252;      /* slate-50 */
+  }
 
-    --card: 217 33% 10%;
-    --card-foreground: 210 40% 98%;
+  .dark {
+    /* DARK */
+    --bg: 9 9 11;             /* near-black */
+    --fg: 229 231 235;        /* zinc-200 */
+    --muted: 161 161 170;     /* zinc-400 (readable!) */
+    --border: 39 39 42;       /* zinc-800 */
+    --accent: 96 165 250;
+    --card: 24 24 27;         /* zinc-900 */
+  }
 
-    --popover: 217 33% 10%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 189 94% 55%;
-    --primary-foreground: 222 47% 4%;
-
-    --secondary: 217 33% 14%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 189 94% 55%;
-    --accent-foreground: 222 47% 4%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 189 94% 55%;
-
-    --radius: 0.75rem;
+  body {
+    @apply bg-bg text-fg transition-colors duration-300;
   }
 }
 
@@ -46,10 +38,22 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-bg text-fg font-sans antialiased;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* ---break---
+*/
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-bg text-fg;
   }
 }

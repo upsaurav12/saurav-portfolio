@@ -1,293 +1,385 @@
 import { MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SocialLinks } from "@/components/SocialLinks";
-import { Badge } from "@/components/ui/badge";
-import profileImage from "@/assets/saurav.png";
-import { motion } from "framer-motion";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
+import profileImage from "@/assets/saurav.png";
+import { TypeWriter } from "@/components/TypeWriter";
+import { TypedSectionHeader } from "@/components/SectionHeader";
+import { GraduationCap, Calendar, Award } from "lucide-react";
+import LFX from '@/assets/LFX.jpg'
+import CNCF from '@/assets/CNCF.png'
+import GSSoC from '@/assets/GSSoC.png'
+import CircuitVerse from '@/assets/CircuitVerse.png'
 
 const Index = () => {
-  // const experiences = [
-  //   {
-  //     company: "LFX Mentorship (CNCF)",
-  //     role: "LFX Intern",
-  //     period: "Jun 2025 - Aug 2025",
-  //     location: "Remote",
-  //     description:
-  //       "Contributed to CNCF projects focusing on performance optimization and testing.",
-  //     highlights: [
-  //       "Designed k8cache in Go, reducing latency from 40ms to ~10ms",
-  //       "Improved CI coverage to 61% with comprehensive unit/integration tests",
-  //       "Added optional in-memory caching and backend pagination",
-  //     ],
-  //     tags: ["Go", "Kubernetes", "CI/CD", "Testing"],
-  //   },
-  //   {
-  //     company: "CNCF",
-  //     role: "Open Source Contributor",
-  //     period: "Jan 2024 - Present",
-  //     location: "Remote",
-  //     description:
-  //       "Active contributor to multiple CNCF projects, focusing on improving developer experience and system reliability.",
-  //     highlights: [
-  //       "Contributed 20+ PRs to Headlamp, External-DNS, Inspektor-Gadget, and KubeEdge",
-  //       "Improved CI pipelines and added comprehensive test coverage",
-  //       "Optimized React + Go code for better performance",
-  //     ],
-  //     tags: ["Go", "React", "Kubernetes", "Open Source"],
-  //   },
-  // ];
 
-  // Example experience data including LFX, CNCF, CircuitVerse, GSSoC
-// Plug this into your Experience section where you map over experiences
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
 
-// Example experience data including LFX, CNCF, CircuitVerse, GSSoC
-// Plug this into your Experience section where you map over experiences
-
-const experiences = [
-  {
-    company: "Linux Foundation (LFX)",
-    role: "LFX Intern — Headlamp",
-    period: "June 2025 – Aug 2025",
-    location: "Remote",
-    highlights: [
-      "Designed and implemented the k8cache package in Golang to cache Kubernetes API responses, reducing latency from 40 ms to 9–15 ms",
-      "Developed unit and integration tests achieving 61% coverage, improving CI robustness and code quality.",
-      "Collaborated with maintainers to integrate an optional in-memory cache layer into Headlamp’s backend, adding authorization and invalidation mechanisms.",
-      "Laid the foundation for server-side pagination and search in Headlamp’s backend.",
-    ],
-    link: [
-      {
-        label: "Headlamp",
-        url: "https://github.com/kubernetes-sigs/headlamp/pulls?q=author%3Aupsaurav12",
-      },
-    ],
-    tags: ["Kubernetes", "React", "TypeScript", "Open Source"],
-  },
-
-  {
-    company: "CNCF Projects",
-    role: "Open Source Contributor",
-    period: "Jan 2025 – Present",
-    location: "Remote",
-    highlights: [
-  "Headlamp (Kubernetes Dashboard) – Implemented new UI features, improved data fetching with optimized hooks, and refactored large legacy components into modular, reusable units; contributed 7+ merged PRs improving maintainability and performance.",
-  "Designed and developed a reusable `headlampConfig` backend package in Go, enabling cleaner architecture, standardized config handling, and easier integration for future features.",
-  "External-DNS – Improved unit test coverage for cloud providers like civo, gandhi and improve error handling from gaps in unit tests.",
-  "Inspektor-Gadget – Strengthened testing reliability by adding unit tests across critical packages (datasource/formatters/json, utils/protocols, utils/syscalls).",
-  "Collaborated with maintainers across multiple repositories; submitted, reviewed, and discussed 15+ pull requests, improving CI quality, test coverage, and code hygiene across the CNCF ecosystem."
-],
-    link: [
-      {
-        label: "Headlamp",
-        url: "https://github.com/kubernetes-sigs/headlamp/pulls?q=author%3Aupsaurav12",
-      },
-      {
-        label: "External DNS",
-        url: "https://github.com/kubernetes-sigs/external-dns/pulls?q=author%3Aupsaurav12",
-      },
-      {
-        label: "Inspektor Gadget",
-        url: "https://github.com/inspektor-gadget/inspektor-gadget/pulls?q=author%3Aupsaurav12",
-      }
-    ],
-    tags: ["Go", "Kubernetes", "CNCF", "Cloud Native"],
-  },
-
-  {
-    company: "GirlScript Summer of Code (GSSoC)",
-    role: "Open Source Contributor",
-    period: "June 2024 - August 2024",
-    location: "Remote",
-    highlights: [
-      "Fixed major UI issues across multiple repositories.",
-      "Collaborated with global contributors using GitHub workflows.",
-      "Merged 10+ PRs across different projects."
-    ],
-    link: [],
-    tags: ["GitHub", "HTML/CSS", "JavaScript", "Open Source"],
-  },
-
-  {
-    company: "CircuitVerse",
-    role: "Contributor",
-    period: "Dec 2023 – May 2024",
-    location: "Remote",
-    highlights: [
-      "Worked with Vue.js, Ruby, and Rails to improve code quality.",
-      "Enhanced UI and improved overall user experience."
-    ],
-    link: [
-      {
-        label: "CircuitVerse",
-        url: "https://github.com/CircuitVerse/CircuitVerse/pulls?q=author%3Aupsaurav12",
-      }
-    ],
-    tags: ["Vue.js", "Ruby", "Rails", "Open Source"],
-  },
-];
-
-
-
-  const projects = [
+  const experiences = [
     {
-      title: "GitFlow",
-      description:
-        "Lightweight self-hosted CI/CD platform for automating build, test, and deployment workflows",
-      stack: ["Go", "React", "Docker", "WebSockets"],
-      repoUrl: "https://github.com/upsaurav12/gitflow",
+      company: "LFX'25",
+      role: "SDE Intern — Headlamp",
+      period: "June 2025 – Aug 2025",
+      location: "Remote",
+      logo: LFX,
+      highlights: [
+        `Built a Golang-based caching layer for Kubernetes APIs, reducing repeated request latency from 40 ms to 9–15 ms
+while improving backend scalability and resource utilization.`,
+        "Developed unit and integration tests achieving 61% coverage, improving CI reliability and long-term code quality.",
+        `Integrated an optional in-memory cache layer with authorization and invalidation mechanisms for internal and
+external resource updates.`,
+        "Laid the foundation for server-side pagination and search using the cache as a backend source of truth.",
+      ],
+      link: [
+        {
+          label: "Headlamp",
+          url: "https://github.com/kubernetes-sigs/headlamp/pulls?q=author%3Aupsaurav12",
+        },
+      ],
+      tags: ["Go", "Kubernetes", "React", "Open Source"],
     },
     {
-      title: "bootstrap-cli",
-      description:
-        "CLI tool for scaffolding production-ready Golang REST APIs with best practices and Docker support",
-      stack: ["Go", "Cobra", "Docker", "CLI"],
-      repoUrl: "https://github.com/upsaurav12/bootstrap",
+      company: "CNCF",
+      role: "Software Developer (Open Source)",
+      period: "Jan 2025 – Present",
+      location: "Remote",
+      logo: CNCF,
+      highlights: [
+        `Implemented backend services and supporting UI features in Headlamp, improving performance, modularity, and
+maintainability; contributed 7+ merged pull requests.`,
+        `Refactored critical code paths and improved error handling across CNCF projects including Headlamp, External-DNS,
+Inspektor-Gadget, and KubeEdge.`,
+        `Collaborated with maintainers by submitting and reviewing 15+ pull requests, strengthening CI pipelines and
+enforcing code quality standards.`,
+      ],
+      link: [
+        {
+          label: "Headlamp",
+          url: "https://github.com/kubernetes-sigs/headlamp/pulls?q=author%3Aupsaurav12",
+        },
+        {
+          label: "External DNS",
+          url: "https://github.com/kubernetes-sigs/external-dns/pulls?q=author%3Aupsaurav12",
+        },
+        {
+          label: "Inspektor Gadget",
+          url: "https://github.com/inspektor-gadget/inspektor-gadget/pulls?q=author%3Aupsaurav12",
+        },
+      ],
+      tags: ["Go", "Cloud Native", "CNCF"],
+    },
+    {
+      company: "CircuitVerse",
+      role: "Open Source Contributor",
+      period: "Dec 2023 – May 2024",
+      location: "Remote",
+      logo: CircuitVerse,
+      highlights: [
+        "Contributed to CircuitVerse by fixing bugs and adding new features to enhance platform functionality.",
+        "Worked with Vue.js, Ruby, and Rails to improve code quality, maintainability, and user experience.",
+        "Collaborated with maintainers to review changes and align contributions with project roadmap.",
+      ],
+      link: [
+        {
+          label: "CircuitVerse",
+          url: "https://github.com/CircuitVerse/CircuitVerse/pulls?q=author%3Aupsaurav12",
+        },
+      ],
+      tags: ["Vue.js", "Ruby", "Rails", "Open Source"],
+    },
+    {
+      company: "GirlScript Summer of Code (GSSoC)",
+      role: "Open Source Contributor",
+      period: "June 2024 – Aug 2024",
+      location: "Remote",
+      logo: GSSoC,
+      highlights: [
+        "Contributed to multiple projects by fixing critical website bugs and enhancing UI features.",
+        "Collaborated with a global team of contributors using GitHub workflows and code reviews.",
+        "Successfully merged 10+ pull requests across different projects, improving functionality and user experience.",
+      ],
+      link: [],
+      tags: ["JavaScript", "HTML", "CSS", "GitHub"],
     },
   ];
 
-  const skills = {
-    Languages: ["Go", "C++", "Python"],
-    Web: ["React.js", "REST APIs", "HTML", "CSS", "JavaScript"],
-    Databases: ["PostgreSQL", "MySQL"],
-    DevOps: ["Docker", "GitHub Actions", "CI/CD", "Linux"],
-  };
+  const projects = [
+    {
+      title: "BootstrapCLI",
+      description:
+        "A production-ready Golang project scaffolding CLI that generates opinionated, best-practice project structures with routing, database integration, tooling, and Docker support—designed to reduce setup overhead and guide developers through scalable backend development.",
+      stack: ["Go", "CLI", "Docker"],
+      repoUrl: "https://github.com/upsaurav12/bootstrap",
+      liveUrl: "https://go-bootstrapper-docs.vercel.app/",
+    },
+    {
+      title: "CICDOrchestr",
+      description:
+        "A lightweight, self-hosted CI/CD orchestrator that executes Dockerized pipelines defined as code. Supports multi-stage YAML workflows, isolated job execution, and real-time log streaming via WebSockets, with a modern React-based UI for monitoring pipeline runs.",
+      stack: ["Go", "React", "Docker"],
+      repoUrl: "https://github.com/upsaurav12/CICDOrchestr",
+    },
+  ];
+
+
+  const skills = [
+    { name: "Go", icon: "devicon-go-plain" },
+    { name: "C", icon: "devicon-c-plain" },
+    { name: "C++", icon: "devicon-cplusplus-plain" },
+    { name: "JavaScript", icon: "devicon-javascript-plain" },
+    { name: "TypeScript", icon: "devicon-typescript-plain" },
+
+    { name: "React", icon: "devicon-react-original" },
+    { name: "Node.js", icon: "devicon-nodejs-plain" },
+
+    { name: "REST APIs", icon: "devicon-fastapi-plain" }, // semantic fit
+
+    { name: "Docker", icon: "devicon-docker-plain" },
+    { name: "Kubernetes", icon: "devicon-kubernetes-plain" },
+    { name: "GitHub Actions", icon: "devicon-github-original" },
+    { name: "CI/CD", icon: "devicon-githubactions-plain" },
+    { name: "Infrastructure Automation", icon: "devicon-terraform-plain" }, // closest semantic fit
+
+    { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+
+    { name: "Git", icon: "devicon-git-plain" },
+    { name: "Linux", icon: "devicon-linux-plain" },
+    { name: "Bash", icon: "devicon-bash-plain" },
+
+    { name: "YAML", icon: "devicon-yaml-plain" },
+    { name: "JSON", icon: "devicon-json-plain" },
+    { name: "OpenAPI", icon: "devicon-swagger-plain" },
+  ];
+
+
 
   return (
-    <div className="min-h-screen bg-white text-black">
-      <main className="container mx-auto px-4 py-12 md:py-20 max-w-3xl border-gray-200 bg-white">
-        {/* Hero Section */}
-        <section className="mb-20">
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    className="flex flex-col md:flex-row items-start gap-10 md:gap-12 border-gray-200 p-6 rounded-xl bg-white"
-  >
-    <div className="flex-1 space-y-6">
-      <div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-2 text-gray-900">
-          Saurav Upadhyay
-        </h1>
+    <div className="min-h-screen bg-bg text-fg font-mono">
+      <main className="mx-auto max-w-4xl px-4 py-16 space-y-24">
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-xl text-blue-600 font-medium mb-3"
-        >
-          Developer | Open Source Contributor (CNCF)
-        </motion.p>
-
-        <p className="text-gray-600 leading-relaxed max-w-2xl">
-          Software developer skilled in designing backend systems and contributing to CNCF open-source projects. Passionate about scalable systems and automation.
-        </p>
-      </div>
-
-      <div className="flex items-center gap-2 text-gray-600">
-        <MapPin className="w-4 h-4" />
-        <span>India 🇮🇳</span>
-        <div className="ml-10">
-          <SocialLinks />
-        </div>
-      </div>
-    </div>
-
-    <motion.img
-      src={profileImage}
-      alt="Saurav Upadhyay"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="w-60 h-60 md:w-60 md:h-60 rounded-full object-cover shadow-lg"
-    />
-  </motion.div>
-</section>
+        {/* HERO */}
+        <section>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-[1fr_auto] gap-12"
+          >
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <TypeWriter
+                  lines={[
+                    "whoami?",
+                    "I am Saurav Upadhyay",
+                    "An open source developer",
+                    "Backend & Cloud Native Engineer",
+                  ]}
+                />
+              </div>
 
 
-        {/* Experience Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Work Experience
-          </h2>
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-  <motion.div
-    key={index}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.4, delay: index * 0.1 }}
-  >
-    <ExperienceCard {...exp} />
-  </motion.div>
-))}
+              <h1 className="text-4xl font-bold">
+                Saurav Upadhyay
+              </h1>
 
+              <p className="text-accent">
+                developer · open source · cloud native
+              </p>
+
+              <p className="text-muted max-w-xl leading-relaxed">
+                Backend-focused engineer contributing to CNCF projects,
+                interested in Kubernetes internals and scalable systems.
+              </p>
+
+              <div className="flex items-center gap-6 text-sm text-muted">
+                <span className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  India
+                </span>
+                <SocialLinks />
+                <ThemeToggle />
+              </div>
+
+            </div>
+
+            <motion.img
+              src={profileImage}
+              alt="Saurav Upadhyay"
+              className="w-44 h-44 rounded-lg  grayscale hover:grayscale-0 transition"
+              whileHover={{ scale: 1.03 }}
+            />
+          </motion.div>
+        </section>
+
+        <section className="space-y-6 rounded-2xl bg-card/50 p-6">
+          <TypedSectionHeader label="experience" />
+
+          <div
+            className="
+      max-h-[520px]
+      overflow-y-auto
+      space-y-6
+      pr-2
+      scroll-smooth
+    "
+          >
+            {experiences.map((exp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <ExperienceCard {...exp} />
+              </motion.div>
+            ))}
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Projects</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-  <motion.div
-    key={index}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.4, delay: index * 0.1 }}
-  >
-    <ProjectCard {...project} />
-  </motion.div>
-))}
+        {/* PROJECTS */}
+        <section className="space-y-6 rounded-2xl bg-card/40 backdrop-blur p-6">
+          <TypedSectionHeader label="projects" />
 
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.12,
+                  delayChildren: 0.1,
+                },
+              },
+            }}
+            className="grid gap-6 md:grid-cols-2"
+          >
+            {projects.map((p) => (
+              <motion.div
+                key={p.title}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 18,
+                    scale: 0.98,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      duration: 0.45,
+                      ease: "easeOut",
+                    },
+                  },
+                }}
+                whileHover={{
+                  y: -4,
+                  transition: { duration: 0.2 },
+                }}
+              >
+                <ProjectCard {...p} />
+              </motion.div>
+            ))}
+          </motion.div>
         </section>
 
-        {/* Skills Section */}
-        <section className="mb-20">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Skills</h2>
-        <div className="flex flex-wrap gap-3">
-        {Object.values(skills).flat().map((skill, idx) => (
-  <motion.div
-    key={skill}
-    initial={{ opacity: 0, scale: 0.8 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.3, delay: idx * 0.05 }}
-  >
-    <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-      {skill}
-    </Badge>
-  </motion.div>
-))}
-</div>
-</section>
 
-        {/* Education Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Education</h2>
-          <div className="rounded-lg p-6 bg-white">
-            <h3 className="text-xl font-semibold text-gray-900 mb-1">
-              B.Tech in Computer Science (AI-ML)
-            </h3>
-            <p className="text-blue-600 font-medium mb-2">
-              SRM Institute of Science and Technology
-            </p>
-            <div className="flex flex-col md:flex-row md:items-center gap-2 text-sm text-gray-600">
-              <span>2022 - 2026</span>
-              <span className="hidden md:inline">•</span>
-              <span>CGPA: 8.25/10</span>
+        {/* SKILLS */}
+        {/* SKILLS */}
+        <section className="space-y-6">
+          <TypedSectionHeader label="skills" />
+
+          <Card className="bg-card border-none shadow-none">
+            <CardContent className="pt-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-6">
+                {skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="
+            flex items-center gap-3
+            text-sm text-muted
+            hover:text-fg
+            transition
+          "
+                  >
+                    <i
+                      className={`${skill.icon} text-xl`}
+                      aria-hidden
+                    />
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+        </section>
+
+        <section className="space-y-4">
+          <TypedSectionHeader label="education" />
+
+          <div className="flex items-start justify-between gap-6">
+            {/* Left */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <GraduationCap className="w-4 h-4 text-accent" />
+                <p className="font-semibold text-fg">
+                  SRM Institute of Science and Technology
+                </p>
+              </div>
+
+              <p className="text-sm text-muted pl-6">
+                B.Tech · Computer Science
+              </p>
+
+              <div className="flex items-center gap-2 pl-6 text-sm text-muted">
+                <Award className="w-3.5 h-3.5" />
+                <span>CGPA 8.25 / 10</span>
+              </div>
+            </div>
+
+            {/* Right */}
+            <div className="flex items-center gap-2 text-sm text-muted whitespace-nowrap">
+              <Calendar className="w-4 h-4" />
+              <span>2022 – 2026</span>
             </div>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-gray-300 pt-8 text-center text-sm text-gray-600">
-          © 2025 Saurav Upadhyay — All Rights Reserved
+
+        {/* FOOTER */}
+        <footer className="mt-24 pt-8 border-t border-border/40 text-sm text-muted">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            {/* Left — terminal exit */}
+            <pre className="font-mono text-xs text-muted">
+              {`> exit 0`}
+            </pre>
+
+            {/* Right — copyright */}
+            <p className="text-xs">
+              © 2025 <span className="text-fg">Saurav Upadhyay</span>
+            </p>
+          </div>
         </footer>
+
       </main>
     </div>
   );
