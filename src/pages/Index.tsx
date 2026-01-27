@@ -189,8 +189,10 @@ enforcing code quality standards.`,
             "whoami ??",
             "I am Saurav Upadhyay!!",
             "A Backend and Open source Developer ;)",
-            "Who love to discuss about Open Source, AI, Backend Systems :)",
-            "I have interest mainly in Cloud Native, OSS and Backend Development."
+            "Who love to discuss about Open Source" ,
+            "AI and Cloud Native",
+            "I have interest mainly in Cloud Native" ,
+            "OSS and Backend Development !"
           ]}
         />
       </div>
